@@ -41,6 +41,9 @@ Drupal.behaviors.masonry = {
       }
       $options.isFitWidth = settings.fit_width;
       $options.isRTL = settings.rtl;
+      if (settings.stamp) {
+        $options.stamp = settings.stamp;
+      }
 
       // Apply Masonry to container
       if (settings.images_first) {

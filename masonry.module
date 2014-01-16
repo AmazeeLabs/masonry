@@ -90,6 +90,7 @@ function masonry_default_options() {
     'masonry_fit_width' => 0,
     'masonry_rtl' => 0,
     'masonry_images_first' => 1,
+    'masonry_stamp' => '',
   );
 
   // Allow other modules to alter the default options
@@ -184,6 +185,12 @@ function masonry_add_options_to_form(&$form, $default_values) {
     '#description' => t("Load all images first before triggering Masonry."),
     '#default_value' => $default_values['masonry_images_first'],
   );
+  $form['masonry_stamp'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Stamp'),
+    '#description' => t('Selector for elements that are stamped within the layout'),
+    '#default_value' => $default_values['masonry_stamp']
+  );
 
   // Allow other modules to alter the form
   drupal_alter('masonry_options_form', $form, $default_values);
@@ -235,6 +242,7 @@ function masonry_apply($container, $options = array()) {
           'fit_width' => (bool) $options['masonry_fit_width'],
           'rtl' => (bool) $options['masonry_rtl'],
           'images_first' => (bool) $options['masonry_images_first'],
+          'stamp' => $options['masonry_stamp'],
         ),
       ),
     );
@@ -252,4 +260,3 @@ function masonry_apply($container, $options = array()) {
     drupal_add_js($script_file);
   }
 }
-
