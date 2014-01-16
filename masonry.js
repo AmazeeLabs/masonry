@@ -45,11 +45,11 @@ Drupal.behaviors.masonry = {
       // Apply Masonry to container
       if (settings.images_first) {
         $container.imagesLoaded(function () {
-          $container.masonry($options);
+          $container.hasClass('masonry') ? $container.masonry('reload') : $container.masonry($options);
         });
       }
       else {
-        $container.masonry($options);
+        $container.hasClass('masonry') ? $container.masonry('reload') : $container.masonry($options);
       }
     });
 
@@ -57,4 +57,3 @@ Drupal.behaviors.masonry = {
 };
 
 })(jQuery);
-
